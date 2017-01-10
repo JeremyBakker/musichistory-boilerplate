@@ -186,6 +186,10 @@ div#main ul li {
 	margin: 12px 0;
 }
 
+div#main ul li + li {
+    border-left: 2px solid black;
+}
+
 div#main ul li a {
 	text-decoration: none;
 	color: black;
