@@ -6,19 +6,18 @@
   <title>Music History</title>
   <link rel="stylesheet" type="text/css" href="css/styles.css">
 </head>
-
 <body>
-	<div class="container">
+	<div id="listContainer">
 		<header>
 			<nav>
 				<ul>
-					<li><a href="#">View Music</a></li>
-					<li><a href="#">Add Music</a></li>
+					<li><a href="#" id="hideAdd">List Music</a></li>
+					<li><a href="#" id="hideList">Add Music</a></li>
 					<li><a href="#">Profile</a></li>
 				</ul>
 			</nav>
 		</header>
-		<div id="content">
+		<div id="listContent">
 			<div id="sidebar">
 			    <form>
 				    <label for="songLength">Song length:</label><br>
@@ -81,36 +80,31 @@
 				</form>
 			</div>
 			<div id="main">
-				<p>Song Name</p>
-				<ul>
-					<li><a href="#">Artist Name</a></li>
-					<li><a href="#">Album Name</a></li>
-					<li><a href="#">Genre</a></li>
-				</ul>
-				<p>Song Name</p>
-				<ul>
-					<li><a href="#">Artist Name</a></li>
-					<li><a href="#">Album Name</a></li>
-					<li><a href="#">Genre</a></li>
-				</ul>
-				<p>Song Name</p>
-				<ul>
-					<li><a href="#">Artist Name</a></li>
-					<li><a href="#">Album Name</a></li>
-					<li><a href="#">Genre</a></li>
-				</ul>
-				<p>Song Name</p>
-				<ul>
-					<li><a href="#">Artist Name</a></li>
-					<li><a href="#">Album Name</a></li>
-					<li><a href="#">Genre</a></li>
-				</ul>
-				<div id="insertion">
-					<p></p>
-				</div>
+				
 			</div>
 		</div>	
 	</div>
-	<script src="songs.js"></script>
+	<div id="addMusicContainer" class="hidden">
+		<div class="group" id="addMusic">
+			<div id="addMusicCol1">
+				<ul>
+					<li>Song name: </li>
+					<li>Artist: </li>
+					<li>Album: </li>
+				</ul>
+			</div>
+			<div id="addMusicCol2">
+				<ul>
+					<li><input type="text" name="songName" placeholder=" Song Name" id="addSongText"></li>
+					<li><input type="text" name="artist" placeholder=" Artist" id="addArtistText"></li>
+					<li><input type="text" name="album" placeholder=" Album" id="addAlbumText"></li>
+				</ul>
+			</div>
+		</div>
+		<div>
+			<button id="addButton">Add</button>
+		</div>
+	</div>
+	<script type="text/javascript" src="songs.js"></script>
 </body>
 </html>
