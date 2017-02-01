@@ -1,0 +1,20 @@
+[
+    {
+        "song": "Another Brick in the Wall",
+        "artist": "Pink Floyd", 
+        "album": "The Wall",
+        "genre": "genre"
+    },
+    {
+        "song": "Welcome to the Jungle",
+        "artist": "Guns & Roses", 
+        "album": "Appetite for Destruction",
+        "genre": "genre"
+    },
+    {
+        "song": "Ironic",
+        "artist": "Alanis Morisette", 
+        "album": "Jagged Little Pill",
+        "genre": "genre"
+    }
+]

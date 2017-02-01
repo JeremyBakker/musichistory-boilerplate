@@ -1,4 +1,7 @@
-// XHR 
+/* 
+XHR to pull song data from JSON file 
+*/
+
 var dataRequest = new XMLHttpRequest();
 dataRequest.addEventListener("load", dataRequestComplete);
 dataRequest.addEventListener("error", dataRequestFailed);
@@ -20,7 +23,9 @@ dataRequest.open("GET", "songs.json");
 dataRequest.send();
 
 
-// add the songs to the DOM in the listContent main content area */
+/* 
+add the songs to the DOM in the listContent main content area 
+*/
 
 function populateMusic(){
 	for (var i = 0; i < songs.length; i++){
@@ -39,9 +44,11 @@ function populateMusic(){
 }
 
 
-// allow users to input data and add to the main section of the list view
-// signal user if a field is empty
-// clear fields on submission
+/*	
+	1. allow users to input data and add to the main section of the list view
+	2. signal user if a field is empty
+	3. clear fields on submission
+*/
 
 document.getElementById("addButton").addEventListener("click", addMusic);
 function addMusic(event) {
@@ -68,7 +75,9 @@ function addMusic(event) {
 }
 
 
-// hide segments of the page based on user interaction with the navigation menu
+/*
+	hide segments of the page based on user interaction with the navigation menu
+*/
 
 document.getElementById("hideAdd").addEventListener("click", hideListView)
 function hideListView(event) {
@@ -81,8 +90,10 @@ function hideAddView(event) {
 	document.getElementById("listContent").classList.add("hidden");
 }
 
-// traverses through the button array each time a button is added in order to add the 
-	// appropriate event listener
+/*
+	traverses through the button array each time a button is added in order to add the 
+	appropriate event listener
+*/
 
 function identifyButtons(){
 	for (var i = 0; i < songs.length; i++) {
@@ -91,11 +102,53 @@ function identifyButtons(){
 }
 
 
-// allow users to delete a musicEntry row from the DOM
+/*
+allow users to delete a musicEntry row from the DOM
+*/
 
 function erase(event) {
 	this.parentNode.parentNode.removeChild(this.parentNode);
 }
+
+/*
+	1. pull data from second JSON file on the click of "more" button at the bottom of list page
+	2. populate that data to the DOM
+*/
+
+document.getElementById("moreButton").addEventListener("click", function(){
+	var dataRequest = new XMLHttpRequest();
+	dataRequest.addEventListener("load", dataRequestComplete);
+	dataRequest.addEventListener("error", dataRequestFailed);
+	
+	function dataRequestComplete(event) {
+		console.log("The data transfer is complete.")
+		var data = JSON.parse(event.target.responseText);
+		var songs2 = [];
+		songs2 = Object.values(data);
+		for (var i = 0; i < songs2.length; i++){
+		console.log(i);
+		document.getElementById("main").innerHTML += `<div class="musicEntry">
+			<p>${songs2[i].song}</p>
+			<ul>
+				<li>${songs2[i].artist}</li>
+				<li>${songs2[i].album}</li>
+				<li>Genre</li>
+			</ul>
+			<button class="delete">Delete</button>
+		</div>`;
+	}
+	identifyButtons();
+	}
+
+	function dataRequestFailed() {
+		console.log("Oops, an error occurred while transferring the file.")
+	}
+
+	dataRequest.open("GET", "songs2.json");
+
+	dataRequest.send();
+
+});
 
 /////////////////////////////////////////////////////////////////////////////////
 
