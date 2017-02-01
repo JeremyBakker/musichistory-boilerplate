@@ -1,155 +1,98 @@
-/* 
-XHR to pull song data from JSON file 
-*/
+$(document).ready(function() {
+	/* 
+	Ajax request to pull song data from JSON file 
+	*/
 
-var dataRequest = new XMLHttpRequest();
-dataRequest.addEventListener("load", dataRequestComplete);
-dataRequest.addEventListener("error", dataRequestFailed);
-
-var songs = [];
-function dataRequestComplete(event) {
-	console.log("The data transfer is complete.")
-	var data = JSON.parse(event.target.responseText);
-	songs = Object.values(data);
-	populateMusic();
-}
-
-function dataRequestFailed() {
-	console.log("Oops, an error occurred while transferring the file.")
-}
-
-dataRequest.open("GET", "songs.json");
-
-dataRequest.send();
+	$.ajax({
+		url:"songs.json"
+		}).done(populateMusic);
 
 
-/* 
-add the songs to the DOM in the listContent main content area 
-*/
+	/* 
+	1. add the songs to the DOM in the listContent main content area 
+	2. attach delete button to entry
+	*/
 
-function populateMusic(){
-	for (var i = 0; i < songs.length; i++){
-		console.log(i);
-		document.getElementById("main").innerHTML += `<div class="musicEntry">
-			<p>${songs[i].song}</p>
-			<ul>
-				<li>${songs[i].artist}</li>
-				<li>${songs[i].album}</li>
-				<li>Genre</li>
-			</ul>
-			<button class="delete">Delete</button>
-		</div>`;
-	}
-	identifyButtons();
-}
+	function populateMusic(songList){
+		for (var i = 0; i < songList.songs.length; i++) {
+			var currentSong = songList.songs[i];
+			$("#main").append(
+				`<div class="musicEntry">
+					<p>${currentSong.song}</p>
+					<ul>
+						<li>${currentSong.artist}</li>
+						<li>${currentSong.album}</li>
+						<li>Genre</li>
+					</ul>
+					<button class="delete" id=${currentSong.song}>Delete</button>
+				</div>`
+			);
+		}
+		$(".delete").click(function(event) {
+			$(event.currentTarget).parent().remove();
+		});
+	};
 
+	/*	
+		1. allow users to input data and add to the main section of the list view
+		2. signal user if a field is empty
+		3. clear fields on submission
+		4. attach delete button to entry
+	*/
 
-/*	
-	1. allow users to input data and add to the main section of the list view
-	2. signal user if a field is empty
-	3. clear fields on submission
-*/
-
-document.getElementById("addButton").addEventListener("click", addMusic);
-function addMusic(event) {
-	song = document.getElementById("addSongText").value;
-	artist = document.getElementById("addArtistText").value;
-	album = document.getElementById("addAlbumText").value;
-	if (song == "" || artist == "" || album == "") {
-		alert("Please enter values in each field before submitting.")
-	}
-	songs.push(song + artist + album);
-	document.getElementById("main").innerHTML += `<div class="musicEntry">	
-		<p>${song}</p>
-			<ul>
-				<li>${artist}</li>
-				<li>${album}</li>
-				<li>Genre</li>
-			</ul>
-			<button class="delete">Delete</button>
-	</div>`;
-	document.getElementById("addSongText").value = "";
-	document.getElementById("addArtistText").value = "";
-	document.getElementById("addAlbumText").value = "";
-	identifyButtons();
-}
-
-
-/*
-	hide segments of the page based on user interaction with the navigation menu
-*/
-
-document.getElementById("hideAdd").addEventListener("click", hideListView)
-function hideListView(event) {
-	document.getElementById("listContent").classList.remove("hidden");
-	document.getElementById("addMusicContainer").classList.add("hidden");
-}
-document.getElementById("hideList").addEventListener("click", hideAddView);
-function hideAddView(event) {
-	document.getElementById("addMusicContainer").classList.remove("hidden");
-	document.getElementById("listContent").classList.add("hidden");
-}
-
-/*
-	traverses through the button array each time a button is added in order to add the 
-	appropriate event listener
-*/
-
-function identifyButtons(){
-	for (var i = 0; i < songs.length; i++) {
-		document.getElementsByClassName("delete")[i].addEventListener("click", erase);
-	}
-}
+	$("#addButton").click(function(event) {
+		let song = $("#addSongText").val();
+		let artist = $("#addArtistText").val();
+		let album = $("#addAlbumText").val();
+		if (song === "" || artist == "" || album == "") {
+			alert("Please enter values in each field before submitting.")
+			return;
+		}
+		$("#main").append(
+			`<div class="musicEntry">	
+				<p>${song}</p>
+				<ul>
+					<li>${artist}</li>
+					<li>${album}</li>
+					<li>Genre</li>
+				</ul>
+				<button class="delete" id="${song}">Delete</button>
+			</div>`
+		);
+		$("#addSongText").value = "";
+		$("#addArtistText").value = "";
+		$("#addAlbumText").value = "";
+		$(".delete").click(function(event) {
+			$(event.currentTarget).parent().remove();
+		});
+	});
 
 
-/*
-allow users to delete a musicEntry row from the DOM
-*/
+	/*
+		hide segments of the page based on user interaction with the navigation menu
+	*/
 
-function erase(event) {
-	this.parentNode.parentNode.removeChild(this.parentNode);
-}
+	$("#hideAdd").click(function(event) {
+		$("#listContent").removeClass("hidden");
+		$("#addMusicContainer").addClass("hidden");
+	});
 
-/*
-	1. pull data from second JSON file on the click of "more" button at the bottom of list page
-	2. populate that data to the DOM
-*/
+	$("#hideList").click(function(event) {
+		$("#addMusicContainer").removeClass("hidden");
+		$("#listContent").addClass("hidden");
+	});
+			
 
-var moreButton = document.getElementById("moreButton");
-moreButton.addEventListener("click", function(){
-	var dataRequest = new XMLHttpRequest();
-	dataRequest.addEventListener("load", dataRequestComplete);
-	dataRequest.addEventListener("error", dataRequestFailed);
-	
-	function dataRequestComplete(event) {
-		console.log("The data transfer is complete.")
-		var data = JSON.parse(event.target.responseText);
-		var songs2 = [];
-		songs2 = Object.values(data);
-		for (var i = 0; i < songs2.length; i++){
-		console.log(i);
-		document.getElementById("main").innerHTML += `<div class="musicEntry">
-			<p>${songs2[i].song}</p>
-			<ul>
-				<li>${songs2[i].artist}</li>
-				<li>${songs2[i].album}</li>
-				<li>Genre</li>
-			</ul>
-			<button class="delete">Delete</button>
-		</div>`;
-	}
-	identifyButtons();
-	document.getElementById("buttonDiv").removeChild(moreButton);
-	}
+	/*
+		1. pull data from second JSON file on the click of "more" button at the bottom of list page
+		2. populate that data to the DOM
+	*/
 
-	function dataRequestFailed() {
-		console.log("Oops, an error occurred while transferring the file.")
-	}
-
-	dataRequest.open("GET", "songs2.json");
-
-	dataRequest.send();
-
+	$("#moreButton").click (function(event){
+		$.ajax({
+		url:"songs2.json"
+		}).done(populateMusic);
+	});
 });
 
 /////////////////////////////////////////////////////////////////////////////////
