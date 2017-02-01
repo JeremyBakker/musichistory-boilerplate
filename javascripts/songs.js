@@ -115,7 +115,8 @@ function erase(event) {
 	2. populate that data to the DOM
 */
 
-document.getElementById("moreButton").addEventListener("click", function(){
+var moreButton = document.getElementById("moreButton");
+moreButton.addEventListener("click", function(){
 	var dataRequest = new XMLHttpRequest();
 	dataRequest.addEventListener("load", dataRequestComplete);
 	dataRequest.addEventListener("error", dataRequestFailed);
@@ -138,6 +139,7 @@ document.getElementById("moreButton").addEventListener("click", function(){
 		</div>`;
 	}
 	identifyButtons();
+	document.getElementById("buttonDiv").removeChild(moreButton);
 	}
 
 	function dataRequestFailed() {
