@@ -1,14 +1,16 @@
-[
-    {
-        "song": "Legs",
-        "artist": "ZZTop", 
-        "album": "Eliminator",
-        "genre": "genre"
-    },
-    {
-        "song": "The Logical Song",
-        "artist": "Supertramp", 
-        "album": "Breakfast in America",
-        "genre": "genre"
-    }
-]
+{
+  "songs": [
+        {
+            "song": "Legs",
+            "artist": "ZZTop", 
+            "album": "Eliminator",
+            "genre": "genre"
+        },
+        {
+            "song": "The Logical Song",
+            "artist": "Supertramp", 
+            "album": "Breakfast in America",
+            "genre": "genre"
+        }
+    ]
+}
