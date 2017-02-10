@@ -1,86 +1,94 @@
-$(document).ready(function() {
-	/* 
-	Ajax request to pull song data from JSON file 
-	*/
-
-	$.ajax({
-		url:"songs.json"
-		}).done(populateMusic);
+"use strict";
+////////////////////////////////////////////
+// CODE REORGANIZED FOR MOST RECENT      //
+// ITERATION OF ASSIGNMENT                //
+// SEE songLoad.js, view.js, and main.js. //
+////////////////////////////////////////////
 
 
-	/* 
-	1. add the songs to the DOM in the listContent main content area 
-	2. attach delete button to entry
-	*/
+// $(document).ready(function() {
+// 	/* 
+// 	Ajax request to pull song data from JSON file 
+// 	*/
 
-	function populateMusic(songList){
-		for (var i = 0; i < songList.songs.length; i++) {
-			var currentSong = songList.songs[i];
-			$("#main").append(
-				`<div class="musicEntry">
-					<p>${currentSong.song}</p>
-					<ul>
-						<li>${currentSong.artist}</li>
-						<li>${currentSong.album}</li>
-						<li>Genre</li>
-					</ul>
-					<button class="delete" id=${currentSong.song}>Delete</button>
-				</div>`
-			);
-		}
-		$(".delete").click(function(event) {
-			$(event.currentTarget).parent().remove();
-		});
-	};
+// 	$.ajax({
+// 		url:"songs.json"
+// 		}).done(populateMusic);
 
-	/*	
-		1. allow users to input data and add to the main section of the list view
-		2. signal user if a field is empty
-		3. clear fields on submission
-		4. attach delete button to entry
-	*/
 
-	$("#addButton").click(function(event) {
-		let song = $("#addSongText").val();
-		let artist = $("#addArtistText").val();
-		let album = $("#addAlbumText").val();
-		if (song === "" || artist == "" || album == "") {
-			alert("Please enter values in each field before submitting.")
-			return;
-		}
-		$("#main").append(
-			`<div class="musicEntry">	
-				<p>${song}</p>
-				<ul>
-					<li>${artist}</li>
-					<li>${album}</li>
-					<li>Genre</li>
-				</ul>
-				<button class="delete" id="${song}">Delete</button>
-			</div>`
-		);
-		$("#addSongText").value = "";
-		$("#addArtistText").value = "";
-		$("#addAlbumText").value = "";
-		$(".delete").click(function(event) {
-			$(event.currentTarget).parent().remove();
-		});
-	});
+// 	/* 
+// 	1. add the songs to the DOM in the listContent main content area 
+// 	2. attach delete button to entry
+// 	*/
+
+// 	function populateMusic(songList){
+// 		for (var i = 0; i < songList.songs.length; i++) {
+// 			var currentSong = songList.songs[i];
+// 			$("#main").append(
+// 				`<div class="musicEntry">
+// 					<p>${currentSong.song}</p>
+// 					<ul>
+// 						<li>${currentSong.artist}</li>
+// 						<li>${currentSong.album}</li>
+// 						<li>Genre</li>
+// 					</ul>
+// 					<button class="delete" id=${currentSong.song}>Delete</button>
+// 				</div>`
+// 			);
+// 		}
+// 		$(".delete").click(function(event) {
+// 			$(event.currentTarget).parent().remove();
+// 		});
+// 	}
+
+		
+// 		1. allow users to input data and add to the main section of the list view
+// 		2. signal user if a field is empty
+// 		3. clear fields on submission
+// 		4. attach delete button to entry
+	
+
+// 	$("#addButton").click(function(event) {
+// 		let song = $("#addSongText").val();
+// 		let artist = $("#addArtistText").val();
+// 		let album = $("#addAlbumText").val();
+// 		if (song === "" || artist === "" || album === "") {
+// 			// alert("Please enter values in each field before submitting.");
+// 			return;
+// 		}
+// 		$("#main").append(
+// 			`<div class="musicEntry">	
+// 				<p>${song}</p>
+// 				<ul>
+// 					<li>${artist}</li>
+// 					<li>${album}</li>
+// 					<li>Genre</li>
+// 				</ul>
+// 				<button class="delete" id="${song}">Delete</button>
+// 			</div>`
+// 		);
+// 		$("#addSongText").value = "";
+// 		$("#addArtistText").value = "";
+// 		$("#addAlbumText").value = "";
+// 		$(".delete").click(function(event) {
+// 			$(event.currentTarget).parent().remove();
+// 		});
+// 	});
 
 
 	/*
 		hide segments of the page based on user interaction with the navigation menu
 	*/
 
-	$("#hideAdd").click(function(event) {
-		$("#listContent").removeClass("hidden");
-		$("#addMusicContainer").addClass("hidden");
-	});
+	// $("#hideAdd").click(function(event) {
+	// 	$("#listContent").removeClass("hidden");
+	// 	$("#addMusicContainer").addClass("hidden");
+	// });
 
-	$("#hideList").click(function(event) {
-		$("#addMusicContainer").removeClass("hidden");
-		$("#listContent").addClass("hidden");
-	});
+	// $("#hideList").click(function(event) {
+	// 	$("#addMusicContainer").removeClass("hidden");
+	// 	$("#listContent").addClass("hidden");
+	// });
 			
 
 	/*
@@ -88,12 +96,12 @@ $(document).ready(function() {
 		2. populate that data to the DOM
 	*/
 
-	$("#moreButton").click (function(event){
-		$.ajax({
-		url:"songs2.json"
-		}).done(populateMusic);
-	});
-});
+// 	$("#moreButton").click (function(event){
+// 		$.ajax({
+// 		url:"songs2.json"
+// 		}).done(populateMusic);
+// 	});
+// });
 
 /////////////////////////////////////////////////////////////////////////////////
 

@@ -1,0 +1,34 @@
+{
+  "name": "musichistoryversionsix",
+  "version": "1.0.0",
+  "description": "Music History Version Six",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JeremyBakker/musichistory-boilerplate.git"
+  },
+  "author": "Jeremy Bakker",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JeremyBakker/musichistory-boilerplate/issues"
+  },
+  "homepage": "https://github.com/JeremyBakker/musichistory-boilerplate#readme",
+  "devDependencies": {
+    "bootstrap": "^3.3.7",
+    "browserify": "^14.0.0",
+    "grunt": "^1.0.1",
+    "grunt-browserify": "^5.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-sass": "^1.0.0",
+    "grunt-contrib-watch": "^1.0.0",
+    "jQuery": "^1.7.4",
+    "jquery": "^3.1.1",
+    "jshint": "^2.9.4",
+    "jshint-stylish": "^2.2.1",
+    "matchdep": "^1.0.1"
+  }
+}
