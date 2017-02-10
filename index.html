@@ -23,55 +23,36 @@
 				    <label for="songLength">Song length:</label><br>
 				    <input type="range" name="songLength" min="0" max="100" step="1">
 				    <label>Artist:</label><br>
-				    <select class="selectBox">
-					    <option selected disabled>Options</option>
-					    <option value="eminem">Eminem</option>
-					    <option value="aliceInChains">Alice in Chains</option>
-					    <option value="johnColtrane">John Coltrane</option>
-					    <option value="milesDavis">Miles Davis</option>
-					    <option value="pantera">Pantera</option>
-					    <option value="tupac">Tupac</option>
-					    <option value="theWoodBrothers">The Wood Brothers</option>
+				    <select class="selectBox" id="artist">
+					    <option value="default">Options</option>
+					    <option value="zztop">ZZ Top</option>
+					    <option value="supertramp">Supertramp</option>
+					    <option value="pinkFloyd">Pink Floyd</option>
+					    <option value="guns&Roses">Guns and Roses</option>
+					    <option value="alanisMorisette">Alanis Morisette</option>
 					</select><br>
 					<label>Albums:</label><br>
-					<select class="selectBox">
-						<option selected disabled>Options</option>
-						<option value="slimShady">The Slim Shady LP</option>
-						<option value="marshallMathers">The Marshall Mathers LP</option>
-						<option value="eminemShow">The Eminem Show</option>
-						<option value="facelift">Facelift</option>
-						<option value="dirt">Dirt</option>
-						<option value="aliceInChains">Alice in Chains</option>
-						<option value="blueTrain">Blue Train</option>
-						<option value="giantSteps">Giant Steps</option>
-						<option value="favoriteThings">My Favorite Things</option>
-						<option value="loveSupreme">A Love Supreme
-						<option value="workin">Workin'</option>
-						<option value="steamin">Steamin'</option>
-						<option value="kindOfBlue">Kind of Blue</option>
-						<option value="inASilentWay">In a Silent Way</option>
-						<option value="bitchesBrew">Bitches Brew</option>
-						<option value="cowboysFromHell">Cowboys from Hell</option>
-						<option value="vulgarDisplayOfPower">Vulgar Display of Power</option>
-						<option value="2PacalypseNow">2Pacalypse Now</option>
-						<option value="meAgainstTheWorld">Me Against the World</option>
-						<option value="allEyezOnMe">All Eyez on Me</option>
-						<option value="theMuse">The Muse</option>
-						<option value="paradise">Paradise</option>
+					<select class="selectBox" id="album">
+						<option value="default">Options</option>
+						<option value="eliminator">Eliminator</option>
+						<option value="breakfastInAmerica">Breakfast in America</option>
+						<option value="theWall">The Wall</option>
+						<option value="appetiteForDestruction">Appetite for Destruction</option>
+						<option value="jaggedLittlePill">Jagged Little Pill</option>
 					</select>
 					<label for="genre">Genre:</label><br>
 				    <div id="checkBoxes">
 					    <div id="leftColumnCheckBox">
 						    <ul>
 							    <li><input type="checkbox" name="genre" value="rock">Rock</li>
-							    <li><input type="checkbox" name="genre" value="pop">Pop</li>
-							    <li><input type="checkbox" name="genre" value="blues">Blues</li>
+							    <li><input type="checkbox" name="genre" value="alternative">Alternative</li>
+							    <li><input type="checkbox" name="genre" value="classicRock">Classic Rock</li>
 						    </ul>
 					    </div>
 					    <div id="rightColumnCheckBox">
 					    	<ul>
 							    <li><input type="checkbox" name="genre" value="classical">Classical</li>
-							    <li><input type="checkbox" name="genre" value="Jjazz">Jazz</li>
+							    <li><input type="checkbox" name="genre" value="jazz">Jazz</li>
 							    <li><input type="checkbox" name="genre" value="hipHop">Hip Hop</li>
 						    </ul>
 					    </div>
@@ -82,7 +63,7 @@
 			<div id="main">
 			</div>
 			<div id="buttonDiv">	
-				<button id="moreButton">More</button>
+				<button id="moreButton">Load All Songs</button>
 			</div>
 		</div>	
 	</div>
@@ -93,6 +74,7 @@
 					<li>Song name: </li>
 					<li>Artist: </li>
 					<li>Album: </li>
+					<li>Genre: </li>
 				</ul>
 			</div>
 			<div id="addMusicCol2">
@@ -100,6 +82,7 @@
 					<li><input type="text" name="songName" placeholder=" Song Name" id="addSongText"></li>
 					<li><input type="text" name="artist" placeholder=" Artist" id="addArtistText"></li>
 					<li><input type="text" name="album" placeholder=" Album" id="addAlbumText"></li>
+					<li><input type="text" name="genre" placeholder=" Genre" id="addGenreText"></li>
 				</ul>
 			</div>
 		</div>
@@ -107,7 +90,8 @@
 			<button id="addButton">Add</button>
 		</div>
 	</div>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
-	<script type="text/javascript" src="javascripts/songs.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" integrity="sha384-0mSbJDEHialfmuBBQP6A4Qrprq5OVfW37PRR3j5ELqxss1yVqOtnepnHVP9aJ7xS" crossorigin="anonymous"></script>
+	<script src="dist/app.js"></script>
 </body>
 </html>
