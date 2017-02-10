@@ -4,31 +4,31 @@
             "song": "Legs",
             "artist": "ZZTop", 
             "album": "Eliminator",
-            "genre": "rock"
+            "genre": "Rock"
         },
         {
             "song": "The Logical Song",
             "artist": "Supertramp", 
             "album": "Breakfast in America",
-            "genre": "classicRock"
+            "genre": "Classic Rock"
         },
         {
             "song": "Another Brick in the Wall",
             "artist": "Pink Floyd", 
             "album": "The Wall",
-            "genre": "classicRock"
+            "genre": "Classic Rock"
         },
         {
             "song": "Welcome to the Jungle",
-            "artist": "Guns & Roses", 
+            "artist": "Guns and Roses", 
             "album": "Appetite for Destruction",
-            "genre": "hardRock"
+            "genre": "Hard Rock"
         },
         {
             "song": "Ironic",
             "artist": "Alanis Morisette", 
             "album": "Jagged Little Pill",
-            "genre": "alternative"
+            "genre": "Alternative"
         }    
     ]
 }

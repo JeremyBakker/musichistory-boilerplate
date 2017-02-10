@@ -19,16 +19,14 @@ let filterSongs = (songs) => {
     	selected.push($(this).val());
 	});
 	for (var i = 0; i < songs.length; i++) {
-		console.log(songs[i].album);
-		console.log();
-		if ((songs[i].artist).toLowerCase() === artist.toLowerCase()) {
+		if ((songs[i].artist.replace(/\s+/g, '')).toLowerCase() === artist.toLowerCase()) {
 			songsArray.push(songs[i]);
 		}
 		if((songs[i].album.replace(/\s+/g, '')).toLowerCase() === album.toLowerCase()) {
 			songsArray.push(songs[i]);
 		}
 		for (var j = 0; j < selected.length; j++) {
-			if((songs[i].genre) === selected[j]){
+			if((songs[i].genre.replace(/\s+/g, '').toLowerCase()) === selected[j]){
 				songsArray.push(songs[i]);
 			}
 		}
